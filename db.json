@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "id": "9200",
+      "name": "Mouse",
+      "quantity": 1
+    },
+    {
+      "id": "5b38",
+      "name": "Headset",
+      "quantity": 1
+    },
+    {
+      "id": "86e2",
+      "name": "CPU",
+      "quantity": 1
+    },
+    {
+      "id": "0cc8",
+      "name": "Monitor",
+      "quantity": 1
+    },
+    {
+      "id": "1ff0",
+      "name": "Teclado",
+      "quantity": 1
+    }
+  ]
+}
