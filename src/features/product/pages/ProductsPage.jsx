@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import {
   deleteProduct,
   getProducts,
-} from "../../product/services/productService";
+} from "../services/productService";
 import { useState, useEffect } from "react";
 
-export default function Products() {
+export default function ProductsPage() {
   const [products, setProducts] = useState([]);
 
   const [search, setSearch] = useState("");

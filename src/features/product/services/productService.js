@@ -1,4 +1,4 @@
-const API_URL = "http://localhost/api/products.php";
+const API_URL = "https://epmdevelopment.com.br/ims-api/products.php";
 
 export async function getProducts() {
   const response = await fetch(API_URL);

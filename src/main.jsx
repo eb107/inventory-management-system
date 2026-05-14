@@ -6,7 +6,7 @@ import { AuthProvider } from "./features/auth/context/AuthContext.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/ims">
     <AuthProvider>
       <App />
     </AuthProvider>

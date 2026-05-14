@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
 
   async function login(nome, senha) {
     try {
-      const response = await fetch("http://localhost/api/login.php", {
+      const response = await fetch("https://epmdevelopment.com.br/ims-api/login.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export function AuthProvider({ children }) {
   }
 
   async function logout() {
-    await fetch("http://localhost/api/logout.php", {
+    await fetch("https://epmdevelopment.com.br/ims-api/logout.php", {
       method: "POST",
       credentials: "include",
     });

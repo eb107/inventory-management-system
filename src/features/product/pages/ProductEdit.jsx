@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProducts, editProduct } from "../services/productService";
-import InventoryForm from "../../inventory/components/InventoryForm";
-
+import AddProduct from "./AddProduct";
 export default function ProductEdit() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -66,7 +65,7 @@ export default function ProductEdit() {
         </p>
       )}
 
-      <InventoryForm initialData={product} onSubmit={handleEdit} />
+      <AddProduct initialData={product} onSubmit={handleEdit} />
     </div>
   );
 }

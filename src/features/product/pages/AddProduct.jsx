@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Input from "../../../shared/ui/Input";
 import Button from "../../../shared/ui/Button";
 
-export default function InventoryForm({ initialData, onSubmit, mode }) {
+export default function AddProduct({ initialData, onSubmit, mode }) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
 
