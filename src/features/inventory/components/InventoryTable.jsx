@@ -39,11 +39,16 @@ export default function InventoryTable({ products, onDelete, onRefresh }) {
                 <td className="px-6 py-4 text-gray-800">{item.name}</td>
                 <td className="px-6 py-4 text-gray-600">{item.quantity}</td>
                 <td className="px-6 py-4 flex gap-2">
-                  <Button onClick={() => setSelectedProduct(item)}>
+                  <Button
+                    variant="secondary"
+                    onClick={() => setSelectedProduct(item)}
+                  >
                     Editar
                   </Button>
 
-                  <Button onClick={() => onDelete(item.id)}>Excluir</Button>
+                  <Button variant="danger" onClick={() => onDelete(item.id)}>
+                    Excluir
+                  </Button>
                 </td>
               </tr>
             ))
@@ -59,6 +64,7 @@ export default function InventoryTable({ products, onDelete, onRefresh }) {
 
       <div className="flex justify-between items-center mt-1 p-2">
         <Button
+          variant="secondary"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >

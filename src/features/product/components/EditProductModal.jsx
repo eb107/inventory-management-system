@@ -61,7 +61,7 @@ export default function EditProductModal({ product, onClose, onSaved }) {
         </div>
 
         <div className="flex justify-between">
-          <Button onClick={onClose} disabled={saving}>
+          <Button variant="secondary" onClick={onClose} disabled={saving}>
             Fechar
           </Button>
           <Button onClick={handleEdit} disabled={saving}>

@@ -100,7 +100,9 @@ export default function AddProductModal({ onClose, onAdded }) {
           </div>
         ))}
         <div className="flex justify-between">
-          <Button onClick={onClose}>Fechar</Button>
+          <Button variant="secondary" onClick={onClose}>
+            Fechar
+          </Button>
           <Button onClick={handleAddAll}>Adicionar</Button>{" "}
         </div>
       </div>

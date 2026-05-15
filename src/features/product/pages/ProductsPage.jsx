@@ -1,9 +1,6 @@
 import Button from "../../../shared/ui/Button";
 import { Link } from "react-router-dom";
-import {
-  deleteProduct,
-  getProducts,
-} from "../services/productService";
+import { deleteProduct, getProducts } from "../services/productService";
 import { useState, useEffect } from "react";
 
 export default function ProductsPage() {
@@ -20,7 +17,10 @@ export default function ProductsPage() {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentProducts = filteredProducts.slice(startIndex, endIndex);
-  const totalPages = Math.max(Math.ceil(filteredProducts.length / itemsPerPage), 1);
+  const totalPages = Math.max(
+    Math.ceil(filteredProducts.length / itemsPerPage),
+    1,
+  );
 
   useEffect(() => {
     async function loadProducts() {
@@ -87,10 +87,13 @@ export default function ProductsPage() {
                   </td>
                   <td className="px-6 py-4 flex gap-2">
                     <Link to={`/product/edit/${product.id}`}>
-                      <Button>Editar</Button>
+                      <Button variant="secondary">Editar</Button>
                     </Link>
 
-                    <Button onClick={() => handleDelete(product.id)}>
+                    <Button
+                      variant="danger"
+                      onClick={() => handleDelete(product.id)}
+                    >
                       Excluir
                     </Button>
                   </td>
@@ -100,6 +103,7 @@ export default function ProductsPage() {
         </table>
         <div className="flex justify-between items-center mt-1 p-2">
           <Button
+            variant="secondary"
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
