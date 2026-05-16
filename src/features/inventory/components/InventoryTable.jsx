@@ -16,6 +16,22 @@ export default function InventoryTable({ products, onDelete, onRefresh }) {
   const currentItems = filteredItems.slice(startIndex, endIndex);
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
 
+  function CategoryBadge({ category }) {
+    const styles = {
+      Hardware: "bg-blue-100 text-blue-700",
+      Periférico: "bg-purple-100 text-purple-700",
+      Rede: "bg-green-100 text-green-700",
+    };
+
+    const style = styles[category] || "bg-gray-100 text-gray-600";
+
+    return (
+      <span className={`${style} px-3 py-1 rounded-full text-xs font-semibold`}>
+        {category}
+      </span>
+    );
+  }
+
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
       <table className="min-w-full">
@@ -23,6 +39,9 @@ export default function InventoryTable({ products, onDelete, onRefresh }) {
           <tr>
             <th className="text-left px-6 py-3 text-sm font-semibold text-gray-600">
               Nome
+            </th>
+            <th className="text-left px-6 py-3 text-sm font-semibold text-gray-600">
+              Categoria
             </th>
             <th className="text-left px-6 py-3 text-sm font-semibold text-gray-600">
               Quantidade
@@ -36,8 +55,15 @@ export default function InventoryTable({ products, onDelete, onRefresh }) {
           {Array.isArray(products) && products.length > 0 ? (
             currentItems.map((item) => (
               <tr key={item.id} className="border-t hover:bg-gray-50">
-                <td className="px-6 py-4 text-gray-800">{item.name}</td>
-                <td className="px-6 py-4 text-gray-600">{item.quantity}</td>
+                <td className="px-6 py-4 text-gray-800 font-semibold">
+                  {item.name}
+                </td>
+                <td className="px-6 py-4">
+                  <CategoryBadge category={item.category} />
+                </td>
+                <td className="px-6 py-4 text-gray-600 font-semibold">
+                  {item.quantity}
+                </td>
                 <td className="px-6 py-4 flex gap-2">
                   <Button
                     variant="secondary"

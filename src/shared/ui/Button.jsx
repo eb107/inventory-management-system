@@ -21,7 +21,7 @@ export default function Button({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${variants[variant]}px-4 py-2 p-6 rounded-lg text-sm font-medium
+      className={`${variants[variant]} px-4 py-2 rounded-lg font-medium
         transition-all duration-150
         disabled:opacity-50 disabled:cursor-not-allowed
         cursor-pointer`}
