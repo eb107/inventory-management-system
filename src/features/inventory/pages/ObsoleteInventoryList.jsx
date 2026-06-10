@@ -30,7 +30,7 @@ export default function InventoryList() {
   return (
     <div className="flex-col justify-between items-center mb-6">
       <div className="p-6 flex justify-between">
-        <h2 className="text-2xl font-bold text-gray-800">Lista de Produtos em Uso</h2>
+        <h2 className="text-2xl font-bold text-gray-800">Lista de Produtos em Desuso</h2>
 
         <div className="flex gap-3">
           <Button onClick={() => exportInventoryToExcel(inventoryItems)}>

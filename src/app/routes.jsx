@@ -3,6 +3,7 @@ import Login from "../features/auth/pages/Login";
 import MainLayout from "../shared/layout/MainLayout";
 import PrivateRoute from "../features/auth/components/PrivateRoute";
 import InventoryList from "../features/inventory/pages/InventoryList";
+import ObsoleteInventoryList from "../features/inventory/pages/ObsoleteInventoryList";
 import ProductCreate from "../features/product/pages/ProductCreate";
 import ProductEdit from "../features/product/pages/ProductEdit";
 import ProductsPage from "../features/product/pages/ProductsPage";
@@ -20,6 +21,7 @@ export default function AppRoutes() {
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inventory" element={<InventoryList />} />
+          <Route path="/inventory/desuso" element={<ObsoleteInventoryList />} />
           <Route path="/product/create" element={<ProductCreate />} />
           <Route path="/product/edit/:id" element={<ProductEdit />} />
           <Route path="/inventory/products" element={<ProductsPage />} />

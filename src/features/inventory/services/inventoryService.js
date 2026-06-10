@@ -1,4 +1,4 @@
-const API_URL = "https://epmdevelopment.com.br/ims-api/inventory.php";
+const API_URL = `${import.meta.env.VITE_API_URL}/inventory.php`;
 
 // GET - listar inventory
 export async function getInventory() {
