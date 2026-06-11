@@ -3,28 +3,28 @@ import InventoryTable from "../components/InventoryTable";
 import Button from "../../../shared/ui/Button";
 import AddProductModal from "../../product/components/AddProductModal";
 import {
-  getInventory,
-  deleteInventoryItem,
-} from "../services/inventoryService";
-import { exportInventoryToExcel } from "../../../shared/utils/exportToExcel";
+  getObsoleteInventory,
+  deleteObsoleteInventoryItem,
+} from "../services/ObsoleteInventoryService";
+import { exportObsoleteInventoryToExcel } from "../../../shared/utils/exportToExcel";
 
 export default function InventoryList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [inventoryItems, setInventoryItems] = useState([]);
+  const [ObsoleteInventoryItems, setObsoleteInventoryItems] = useState([]);
 
-  async function loadInventory() {
-    const data = await getInventory();
-    setInventoryItems(data);
+  async function loadObsoleteInventory() {
+    const data = await getObsoleteInventory();
+    setObsoleteInventoryItems(data);
   }
 
   useEffect(() => {
-    loadInventory();
+    loadObsoleteInventory();
   }, []);
 
   async function handleDelete(id) {
-    await deleteInventoryItem(id);
+    await deleteObsoleteInventoryItem(id);
 
-    setInventoryItems((prev) => prev.filter((item) => item.id !== id));
+    setObsoleteInventoryItems((prev) => prev.filter((item) => item.id !== id));
   }
 
   return (
@@ -33,7 +33,7 @@ export default function InventoryList() {
         <h2 className="text-2xl font-bold text-gray-800">Lista de Produtos em Desuso</h2>
 
         <div className="flex gap-3">
-          <Button onClick={() => exportInventoryToExcel(inventoryItems)}>
+          <Button onClick={() => exportObsoleteInventoryToExcel(ObsoleteInventoryItems)}>
             EXCEL
           </Button>
 
@@ -46,14 +46,14 @@ export default function InventoryList() {
       {isModalOpen && (
         <AddProductModal
           onClose={() => setIsModalOpen(false)}
-          onAdded={loadInventory}
+          onAdded={loadObsoleteInventory}
         />
       )}
 
       <InventoryTable
-        products={inventoryItems}
+        products={ObsoleteInventoryItems}
         onDelete={handleDelete}
-        onRefresh={loadInventory}
+        onRefresh={loadObsoleteInventory}
       />
     </div>
   );

@@ -27,5 +27,19 @@ export function exportInventoryToExcel(inventoryItems) {
 
 
     // passa os dados formatados e o nome do arquivo
-    exportToExcel(formattedData, "relatório-inventario");
+    exportToExcel(formattedData, "relatório-inventario-uso");
+}
+
+export function exportObsoleteInventoryToExcel(inventoryItems) {
+
+    // percorre cada item do invetário e transforma em um objeto formatado
+    const formattedData = inventoryItems.map((item) => ({
+        Nome: item.name,
+        Categoria: item.category,
+        Quantidade: item.quantity,
+    }));
+
+
+    // passa os dados formatados e o nome do arquivo
+    exportToExcel(formattedData, "relatório-inventario-desuso");
 }
