@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { getProducts } from "../services/productService";
 import { createInventoryItem } from "../../inventory/services/inventoryService";
 import Button from "../../../shared/ui/Button";
+import {
+  getObsoleteInventory,
+  createObsoleteInventoryItem,
+} from "../../inventory/services/obsoleteInventoryService";
 
 export default function AddProductModal({ onClose, onAdded }) {
   const [products, setProducts] = useState([]);
@@ -45,6 +49,39 @@ export default function AddProductModal({ onClose, onAdded }) {
     for (const [productId, quantity] of items) {
       if (quantity > 0) {
         await createInventoryItem({
+          product_id: Number(productId),
+          quantity,
+        });
+      }
+    }
+
+    onAdded();
+    onClose();
+  }
+
+  async function handleAddObsoleteInventory(product) {
+    const quantity = quantities[product.id] || 0;
+
+    if (quantity <= 0) {
+      alert("Informe uma quantidade válida");
+      return;
+    }
+
+    await createObsoleteInventoryItem({
+      product_id: product.id,
+      quantity,
+    });
+
+    onAdded();
+    onClose();
+  }
+
+  async function handleAddAllObsoleteInventory(product) {
+    const items = Object.entries(quantities);
+
+    for (const [productId, quantity] of items) {
+      if (quantity > 0) {
+        await createObsoleteInventoryItem({
           product_id: Number(productId),
           quantity,
         });
@@ -103,7 +140,12 @@ export default function AddProductModal({ onClose, onAdded }) {
           <Button variant="secondary" onClick={onClose}>
             Fechar
           </Button>
-          <Button onClick={handleAddAll}>Adicionar</Button>{" "}
+          <Button
+            onClick={handleAddAll}
+            onClick={handleAddAllObsoleteInventory}
+          >
+            Adicionar
+          </Button>{" "}
         </div>
       </div>
     </div>
