@@ -61,8 +61,23 @@ export default function InventoryTable({ products, onDelete, onRefresh }) {
                 <td className="px-6 py-4">
                   <CategoryBadge category={item.category} />
                 </td>
-                <td className="px-6 py-4 text-gray-600 font-semibold">
+                <td
+                  className={
+                    item.quantity < item.min_quantity
+                      ? "px-6 py-4 text-red-600 font-bold"
+                      : "px-6 py-4 text-gray-600 font-semibold"
+                  }
+                >
                   {item.quantity}
+                  {item.quantity < item.min_quantity && (
+                    <span className="relative group cursor-help">
+                      !
+                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:flex whitespace-nowrap bg-gray-300 text-xs px-2 py-1 rounded shadow-lg z-10">
+                        Estoque mínimo: {item.min_quantity}
+                        <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-red-800"></span>
+                      </span>
+                    </span>
+                  )}
                 </td>
                 <td className="px-6 py-4 flex gap-2">
                   <Button
