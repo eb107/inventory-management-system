@@ -45,6 +45,22 @@ export default function ProductsPage() {
     setCurrentPage(1);
   }, [search]);
 
+  function CategoryBadge({ category }) {
+    const styles = {
+      Hardware: "bg-blue-100 text-blue-700",
+      Periférico: "bg-purple-100 text-purple-700",
+      Rede: "bg-green-100 text-green-700",
+    };
+
+    const style = styles[category] || "bg-gray-100 text-gray-600";
+
+    return (
+      <span className={`${style} px-3 py-1 rounded-full text-xs font-semibold`}>
+        {category}
+      </span>
+    );
+  }
+
   return (
     <div className="p-1">
       <h2 className="text-2xl font-bold text-gray-800">Produtos</h2>
@@ -81,9 +97,9 @@ export default function ProductsPage() {
             {Array.isArray(products) &&
               currentProducts.map((product) => (
                 <tr key={product.id} className="border-t hover:bg-gray-50">
-                  <td className="px-6 py-4 text-gray-800">{product.name}</td>
+                  <td className="px-6 py-4 text-gray-800 font-semibold">{product.name}</td>
                   <td className="px-6 py-4 text-gray-600">
-                    {product.category}
+                    <CategoryBadge category={product.category}/>
                   </td>
                   <td className="px-6 py-4 flex gap-2">
                     <Link to={`/product/edit/${product.id}`}>

@@ -64,7 +64,7 @@ export default function InventoryTable({ products, onDelete, onRefresh }) {
                 <td
                   className={
                     item.quantity < item.min_quantity
-                      ? "px-6 py-4 text-red-600 font-bold"
+                      ? "px-6 py-4 text-red-600 font-bold animate-pulse"
                       : "px-6 py-4 text-gray-600 font-semibold"
                   }
                 >
