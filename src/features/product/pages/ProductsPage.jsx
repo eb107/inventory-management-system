@@ -126,7 +126,7 @@ export default function ProductsPage() {
             Anterior
           </Button>
 
-          <span className="text-gray-600">
+          <span className="text-gray-600 font-semibold">
             Página {currentPage} de {totalPages}
           </span>
 
