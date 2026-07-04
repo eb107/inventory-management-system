@@ -7,6 +7,7 @@ import ObsoleteInventoryList from "../features/inventory/pages/ObsoleteInventory
 import ProductCreate from "../features/product/pages/ProductCreate";
 import ProductEdit from "../features/product/pages/ProductEdit";
 import ProductsPage from "../features/product/pages/ProductsPage";
+import ChangePassword from "../features/auth/pages/ChangePassword";
 
 function Dashboard() {
   return <h2>Dashboard</h2>;
@@ -16,6 +17,7 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/login/changepassword" element={<ChangePassword />} />
 
       <Route element={<PrivateRoute />}>
         <Route element={<MainLayout />}>

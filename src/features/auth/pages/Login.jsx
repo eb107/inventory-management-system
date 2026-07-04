@@ -37,7 +37,7 @@ export default function Login() {
             placeholder="Senha"
             onChange={(e) => setSenha(e.target.value)}
           />
-          <div className="flex justify-center text-blue-800"><Link className="hover:underline">Esqueceu a senha?</Link></div>
+          <div className="flex justify-center text-blue-800"><Link to="/login/changepassword" className="hover:underline">Esqueceu a senha?</Link></div>
           <Button type="submit">Entrar</Button>
         </form>
       </div>
